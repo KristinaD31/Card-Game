@@ -2,7 +2,7 @@ import './Card.css'
 
 
 
-export default function Card({card}) {
+export default function Card({card,flipped}) {
 
     const backClick = () => {
         backClick(card)
@@ -10,9 +10,10 @@ export default function Card({card}) {
     }
     return(
       <div className ="cards" > 
-        <div> 
+        <div className={flipped ? "flipped": ""}> 
           <img className="front" src= {card.src} alt = "front of the card" />
-          <text className ="back" on Click ={backClick} alt="back of the card" />
+          <img className ="back" src = "/img/redcover.jpeg"
+          on Click ={backClick} alt="back of the card" />
         </div>
         </div>
     )
