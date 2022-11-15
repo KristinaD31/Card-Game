@@ -2,3 +2,17 @@
     position: relative;
 }
 
+
+.card .front{
+    transform: rotateY(90deg);
+    position: absolute;
+}
+.flipped .front{
+    transform: rotateY(0deg);
+}
+.cards{
+    margin-top: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: auto;
+}

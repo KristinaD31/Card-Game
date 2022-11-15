@@ -4,10 +4,10 @@ import './App.css';
 import Card from './Card';
 
 const cardImages = [
-  {"src": "/img/computer.jpeg" }, 
-  {"src": "/img/headphones.jpeg"}, 
-  {"src": "/img/phone.jpeg"},
-  {"src": "/img/ipad.jpeg"}
+  {"src": "/img/computer.jpeg", match: false}, 
+  {"src": "/img/headphones.jpeg", match: false}, 
+  {"src": "/img/phone.jpeg",match: false},
+  {"src": "/img/ipad.jpeg",match: false}
   ]
 
 function App() {
@@ -38,13 +38,23 @@ const [cardTwo, setCardTwo]=useState(null)
     if(cardOne && cardTwo) 
 
     if(cardOne.src === cardTwo.src) {
-      console.log("You found a match")
+      setCards(previousCards => { 
+        return previousCards.map(card => {
+          if(card.src === cardOne.src){
+            return {...card, match: true}
+          } else{
+            return card
+          }
+        })
+      })
       resetTurn()
     } else{
-      console.log ("Cards do not match")
+      
       resetTurn()
     }
   }, [cardOne, cardTwo])
+    
+    console.log(cards)
 
     //reset
      const resetTurn = () => {
@@ -61,7 +71,8 @@ const [cardTwo, setCardTwo]=useState(null)
     <div className='grid'>
       {cards.map(card => (
         <Card key={card.id} card={card}
-        backClick={backClick}/> 
+        backClick={backClick}
+        flipped={card === cardOne || card === cardTwo || card.match}/> 
       ))}
     </div>
     </div>
