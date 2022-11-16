@@ -25,11 +25,11 @@ const [cardTwo, setCardTwo]=useState(null)
 
      setCards(shuffleCards)
      setTurns(0)
-  }
+  } 
 
   //CHOICE
 
-  const handleChoice = () => (card) => {
+  const handleChoice = (card) => {
     cardOne ? setCardTwo(card): setCardOne(card)
   }
 
@@ -51,8 +51,8 @@ const [cardTwo, setCardTwo]=useState(null)
     } else{
       
       resetTurn()
-    }
-  }
+    } 
+  } 
   }, [cardOne, cardTwo])
     
     console.log(cards)
