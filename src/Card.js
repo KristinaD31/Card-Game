@@ -12,7 +12,7 @@ export default function Card({card, handleChoice, flipped}) {
           <img className="front" src= {card.src} alt = "front of the card" />
           <img className ="back" 
           src = "/img/redcover.jpeg"
-          on Click ={backClick} 
+          onClick ={backClick} 
           alt="back of the card" />
         </div>
         </div>
