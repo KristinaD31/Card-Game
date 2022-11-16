@@ -4,11 +4,13 @@
 
 .grid {
   margin-top: 40px;
+  margin-bottom: 40x;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 40px; 
+  grid-gap: 100px; 
 }
-img{
+
+/* .img{
 
   display:inline;
   margin-left: auto;
@@ -20,7 +22,8 @@ img{
   border: 2px solid blue;
   border-radius: 6px;
   padding: 5px;
-}
+} 
+*/ 
 
 
 
