@@ -8,14 +8,16 @@ const cardImages = [
   {"src": "/img/headphones.jpeg", match: false}, 
   {"src": "/img/phone.jpeg", match: false},
   {"src": "/img/ipad.jpeg", match: false}
-  ]
+  ]; 
+  
 
 function App() {
 
 const [cards, setCards]= useState([])
-const [turns, setTurns]=useState(0)
-const [cardOne, setCardOne] =useState(null)
-const [cardTwo, setCardTwo]=useState(null)
+const [turns, setTurns]= useState(0)
+const [cardOne, setCardOne] = useState(null)
+const [cardTwo, setCardTwo] = useState(null)
+const [disabled, setDisabled]= useState(false)
 
   //shuffle cards 
   const shuffleCards = () => {
@@ -24,19 +26,20 @@ const [cardTwo, setCardTwo]=useState(null)
      .map((card) => ({ ...card, id: Math.random()}))
 
      setCards(shuffleCards)
-     setTurns(0)
+     resetTurn()
   } 
 
   //CHOICE
 
   const handleChoice = (card) => {
-    cardOne ? setCardTwo(card): setCardOne(card)
+    cardOne ? setCardTwo(card) : setCardOne(card)
   }
 
   //compare 2 cards
   useEffect(() => {
+    
     if(cardOne && cardTwo) { 
-
+      setDisabled(true)
     if(cardOne.src === cardTwo.src) {
       setCards(prevCards => { 
         return prevCards.map(card => {
@@ -50,18 +53,19 @@ const [cardTwo, setCardTwo]=useState(null)
       resetTurn()
     } else{
       
-      resetTurn()
+      setTimeout(() => resetTurn(), 1000) 
     } 
   } 
   }, [cardOne, cardTwo])
     
-    console.log(cards)
+    console.log(cardOne, cardTwo)
 
     //reset
      const resetTurn = () => {
      setCardOne(null)
      setCardTwo(null)
      setTurns(prevTurns => prevTurns +1 )
+     setDisabled(false)
 }
 
   return (
@@ -74,7 +78,9 @@ const [cardTwo, setCardTwo]=useState(null)
         <Card key={card.id} 
         card={card}
         handleChoice={handleChoice}
-        flipped={card === cardOne || card === cardTwo || card.match}/> 
+        flipped={card === cardOne || card === cardTwo || card.match}
+        disabled={disabled}
+        /> 
       ))}
     </div>
     </div>
