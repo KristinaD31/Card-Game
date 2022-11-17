@@ -2,16 +2,14 @@
   text-align: center;
 }
 
-.grid {
+ .grid {
   margin-top: 40px;
-  margin-bottom: 40x;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 100px; 
 }
 
 /* .img{
-
   display:inline;
   margin-left: auto;
   margin-right: auto;
@@ -24,6 +22,10 @@
   padding: 5px;
 } 
 */ 
-
-
+h1{
+  text-decoration: none;
+  color: rgb(204, 81, 50);
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  
+}
 
